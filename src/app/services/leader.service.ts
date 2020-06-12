@@ -7,6 +7,18 @@ import { Leaders } from '../shared/leaders';
   providedIn: 'root'
 })
 export class LeaderService {
+  getLeaders(): Leader[] {
+    return Leaders;
+  }
+  
+  getLeader(id: string): Leader {
+    return Leaders.filter((leader) => (leader.id === id))[0];
+  }
+  
+  getFeaturedLeader(): Leader {
+    return Leaders.filter((leader) => leader.featured)[0];
+  }
+  
 
   constructor() { }
 }
