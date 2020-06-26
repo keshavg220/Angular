@@ -1,5 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule , CUSTOM_ELEMENTS_SCHEMA} from '@angular/core';
+import { NgModule } from '@angular/core';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatToolbarModule } from '@angular/material/toolbar'; 
 import { MatListModule } from '@angular/material/list';
@@ -13,6 +13,8 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatRadioModule } from '@angular/material';
 import { MatIconModule } from '@angular/material';
 import { MatDatepickerModule } from '@angular/material';
+import { HttpClientModule } from '@angular/common/http';
+
 
 import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
@@ -27,6 +29,7 @@ import { FormsModule } from '@angular/forms';
 import { PromotionService } from './services/promotion.service';
 import { LeaderService } from './services/leader.service';
 import { DishService } from './services/dish.service';
+import { ProcessHttpmsgService } from './services/process-httpmsg.service';
 
 
 
@@ -34,6 +37,7 @@ import { DishService } from './services/dish.service';
 
 
 
+import { baseURL } from './shared/baseurl';
 import { AppComponent } from './app.component';
 import 'hammerjs';
 import { MenuComponent } from './menu/menu.component';
@@ -44,6 +48,7 @@ import { AboutComponent } from './about/about.component';
 import { HomeComponent } from './home/home.component';
 import { ContactComponent } from './contact/contact.component';
 import { LoginComponent } from './login/login.component';
+
 
 
 @NgModule({
@@ -64,6 +69,7 @@ import { LoginComponent } from './login/login.component';
     MatToolbarModule,
     FlexLayoutModule,
     FormsModule,
+    HttpClientModule,
     MatGridListModule,
     MatCardModule,
     MatFormFieldModule, 
@@ -86,7 +92,9 @@ import { LoginComponent } from './login/login.component';
   providers: [
     DishService,
     PromotionService,
-    LeaderService
+    LeaderService,
+    ProcessHttpmsgService,
+    {provide: 'BaseURL', useValue: baseURL}
   ],
   entryComponents:[
     LoginComponent
