@@ -8,7 +8,8 @@ import { Location } from '@angular/common';
 import { switchMap } from 'rxjs/operators';
 import { stringify } from 'querystring';
 import { templateJitUrl } from '@angular/compiler';
-import { trigger, state, style, animate, transition } from '@angular/animations';
+import { visibility } from '../animation/app.animation';
+import { flyInOut, expand } from '../animation/app.animation';
 
 
 
@@ -19,19 +20,15 @@ import { trigger, state, style, animate, transition } from '@angular/animations'
   selector: 'app-dishdetail',
   templateUrl: './dishdetail.component.html',
   styleUrls: ['./dishdetail.component.scss'],
-  animations: [
-    trigger('visibility', [
-        state('shown', style({
-            transform: 'scale(1.0)',
-            opacity: 1
-        })),
-        state('hidden', style({
-            transform: 'scale(0.5)',
-            opacity: 0
-        })),
-        transition('* => *', animate('1s ease-in-out'))
-    ])
-  ]
+  host: {
+    '[@flyInOut]': 'true',
+    'style': 'display: block;'
+    },
+    animations: [
+      flyInOut(),
+      visibility(),
+      expand()
+    ]
 })
 export class DishdetailComponent implements OnInit {
   @ViewChild('cform') commentFormDirective;
