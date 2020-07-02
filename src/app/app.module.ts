@@ -30,6 +30,8 @@ import { PromotionService } from './services/promotion.service';
 import { LeaderService } from './services/leader.service';
 import { DishService } from './services/dish.service';
 import { ProcessHttpmsgService } from './services/process-httpmsg.service';
+import { FeedbackService } from './services/feedback.service';
+
 
 
 
@@ -96,6 +98,7 @@ import { HighlightDirective } from './directives/highlight.directive';
     PromotionService,
     LeaderService,
     ProcessHttpmsgService,
+    FeedbackService,
     {provide: 'BaseURL', useValue: baseURL}
   ],
   entryComponents:[
